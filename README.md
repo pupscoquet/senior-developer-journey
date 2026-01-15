@@ -1,93 +1,87 @@
-# senior-developer-journey
+# Senior Developer Journey 🚀
 
+**Timeline:** January 2026 - December 2027 (24 months)  
+**Goal:** Progress from Junior to Senior Software Engineer  
+**Tech Stack:** SvelteKit, TypeScript, HTML, Tailwind CSS, C++
 
+## About This Repository
 
-## Getting started
+This repository documents my journey from junior to senior software engineer. Each project demonstrates specific skills and concepts I've learned along the way. The work here reflects real learning, growth, and the application of senior-level engineering practices.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-* [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+## Repository Structure
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/vcoquet/senior-developer-journey.git
-git branch -M main
-git push -uf origin main
+📦 senior-developer-journey
+├── 📁 phase-1-frontend-mastery/      # Months 1-8
+├── 📁 phase-2-backend-fullstack/     # Months 6-14
+├── 📁 phase-3-senior-skills/         # Months 12-20
+├── 📁 phase-4-leadership-impact/     # Months 18-24
+└── 📁 documentation/                 # Learning notes & reflections
 ```
 
-## Integrate with your tools
+## Progress Tracking
 
-* [Set up project integrations](https://gitlab.com/vcoquet/senior-developer-journey/-/settings/integrations)
+### Phase 1: Frontend Mastery (Months 1-8)
+| Skill | Status | Project Link | Key Learnings |
+|-------|--------|--------------|---------------|
+| Advanced SvelteKit | 🔄 In Progress | [Link](#) | TBD |
+| TypeScript Deep Dive | ⏳ Not Started | - | - |
+| Component Systems | ⏳ Not Started | - | - |
+| Frontend Testing | ⏳ Not Started | - | - |
+| Performance Optimization | ⏳ Not Started | - | - |
+| Accessibility | ⏳ Not Started | - | - |
+| State Management | ⏳ Not Started | - | - |
 
-## Collaborate with your team
+### Phase 2: Backend & Full-Stack (Months 6-14)
+| Skill | Status | Project Link | Key Learnings |
+|-------|--------|--------------|---------------|
+| C++ Fundamentals | ⏳ Not Started | - | - |
+| C++ Advanced Patterns | ⏳ Not Started | - | - |
+| Database Design | ⏳ Not Started | - | - |
+| API Design | ⏳ Not Started | - | - |
+| Backend Testing | ⏳ Not Started | - | - |
+| Security | ⏳ Not Started | - | - |
+| Caching | ⏳ Not Started | - | - |
 
-* [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### Phase 3: Senior Skills (Months 12-20)
+| Skill | Status | Project Link | Key Learnings |
+|-------|--------|--------------|---------------|
+| System Design | ⏳ Not Started | - | - |
+| DevOps & CI/CD | ⏳ Not Started | - | - |
+| Monitoring | ⏳ Not Started | - | - |
+| Code Review | ⏳ Not Started | - | - |
+| Scalability | ⏳ Not Started | - | - |
+| Project Leadership | ⏳ Not Started | - | - |
+| Documentation | ⏳ Not Started | - | - |
 
-## Test and Deploy
+### Phase 4: Leadership & Impact (Months 18-24)
+| Skill | Status | Project Link | Key Learnings |
+|-------|--------|--------------|---------------|
+| Mentoring | ⏳ Not Started | - | - |
+| Tech Decisions | ⏳ Not Started | - | - |
+| Cross-Team Collaboration | ⏳ Not Started | - | - |
+| Technical Innovation | ⏳ Not Started | - | - |
+| Knowledge Sharing | ⏳ Not Started | - | - |
+| Hiring | ⏳ Not Started | - | - |
+| Business Impact | ⏳ Not Started | - | - |
 
-Use the built-in continuous integration in GitLab.
+**Legend:**
+- ✅ Completed
+- 🔄 In Progress
+- ⏳ Not Started
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+---
 
-***
+## Resources
 
-# Editing this README
+- [My Learning Roadmap](./documentation/roadmap.md)
+- [Weekly Reflections](./documentation/reflections/)
+- [Technical Notes](./documentation/technical-notes/)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Contact
 
-## Suggestions for a good README
+Feel free to reach out if you have questions about any of these projects or want to discuss the learning journey!
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+---
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Last Updated:** January 2026
