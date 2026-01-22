@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { text } from "@sveltejs/kit";
-	import { onMount } from "svelte";
+	import { onMount, tick } from "svelte";
 
 	type Message = {
 		message: string;
@@ -39,12 +39,34 @@
 			bc.close();
 		};
 	});
+
+	let listEl: HTMLUListElement | undefined = $state();
+	let itemsEl: HTMLLIElement[] = $state([]);
+
+	$effect(() => {
+		if (messages.length) {
+			tick().then(() => {
+				if (listEl) {
+					listEl.scrollTop = listEl.scrollHeight;
+				}
+			});
+		}
+	});
 </script>
 
 <div
-	class="min-h-screen bg-[#decdf5] flex flex-col items-center justify-center *:max-w-[80vw] *:w-full"
+	class="min-h-screen bg-linear-to-t from-sky-500 to-purple-500 flex flex-col items-center justify-center *:max-w-[80vw] *:w-full"
 >
 	{#if !user}
+		<span class="mb-2 flex mx-auto w-full text-white text-4xl"
+			><span class="-rotate-25 inline font-bold mt-0.5 mr-0.5">e</span>
+			<span class="font-bold font-header"> cho </span>
+			<span class="font-bold font-header text-white/80">o</span>
+			<span class="font-bold font-header text-white/60">o</span>
+			<span class="font-bold font-header text-white/40">o</span>
+			<span class="font-bold font-header text-white/20">o</span>
+			<span class="font-bold font-header text-white/10">o</span>
+		</span>
 		<div class="flex gap-2 *:rounded-xl">
 			<input
 				placeholder="Choose a username"
@@ -56,45 +78,68 @@
 			/>
 			<button
 				onclick={() => setUser()}
-				class="bg-[#656176] text-white font-semibold text-sm py-1 px-3"
-				>Join chat</button
+				class="bg-sky-100 font-semibold text-sm py-1 px-3">Join chat</button
 			>
 		</div>
 	{:else}
 		<div>
 			<div
-				class="flex justify-between items-center px-4 rounded-xl bg-[#f8f1ff] mb-2"
+				class="border-b border-white text-white flex justify-between items-center mb-2 pb-1"
 			>
-				<h1 class="font-bold text-xl">Chat</h1>
-				<p class=" text-sm">
+				<span class="flex text-white text-xl"
+					><span class="-rotate-25 inline font-bold mt-0.4 mr-0.5">e</span>
+					<span class="font-bold font-header"> cho </span>
+					<span class="font-bold font-header text-white/80">o</span>
+					<span class="font-bold font-header text-white/60">o</span>
+					<span class="font-bold font-header text-white/40">o</span>
+					<span class="font-bold font-header text-white/20">o</span>
+					<span class="font-bold font-header text-white/10">o</span>
+				</span>
+				<p class="w-fit text-sm">
 					Logged in as <span class="font-bold">{user}</span>
 				</p>
 			</div>
 			<div
-				class="bg-[#f8f1ff] flex-1 max-w-[80vw] p-4 max-w-200 mx-auto max-h-[80vh] h-[80vh]
+				class="bg-linear-to-t from-white/45 to-white/0 flex-1 max-w-[80vw] p-4 max-w-200 mx-auto max-h-[80vh] h-[80vh]
 				rounded-sm flex flex-col justify-between"
 			>
-				<ul class="flex-1 overflow-y-auto mb-2">
+				<ul
+					class="flex-1 flex flex-col mb-2 gap-1 overflow-y-auto
+					[mask-image:linear-gradient(to_top,black_75%,transparent)]
+					[-webkit-mask-image:linear-gradient(to_top,black_75%,transparent)]"
+					bind:this={listEl}
+				>
+					<li class="mt-auto"></li>
 					{#each messages as m, i}
-						{@const showArrow =
-							i === 0 || messages[i - 1].user !== m.user}
+						{@const prev = messages[i - 1]}
+						{@const next = messages[i + 1]}
+						{@const firstInGroup = i === 0 || prev.user !== m.user}
+						{@const lastInGroup = i === messages.length - 1 || next.user !== m.user}
+
+						{@const myCorners = (() => {
+							if (firstInGroup && lastInGroup) return 'rounded-md'
+							if (firstInGroup) return 'rounded-md rounded-br-none'
+							if (lastInGroup) return 'rounded-md rounded-tr-none'
+							return 'rounded-l-md rounded-r-none'
+						})}
+
+						{@const theirCorners = (() => {
+							if (firstInGroup && lastInGroup) return 'rounded-md'
+							if (firstInGroup) return 'rounded-md rounded-bl-none'
+							if (lastInGroup) return 'rounded-md rounded-tl-none'
+							return 'rounded-l-none rounded-r-md'
+						})}
 						<li
-							class="py-1 px-3 rounded-full text-sm mb-2 text-white w-fit max-w-[80%] {m.user ===
+							class="relative py-1 px-2 rounded-sm text-sm w-fit max-w-[80%] {m.user ===
 							user
-								? 'text-right place-self-end bg-[#1b998b]'
-								: 'text-left place-self-start bg-[#656176]'}"
+								? `text-right place-self-end bg-sky-100 ${myCorners()}`
+								: `text-left place-self-start bg-purple-100 ${theirCorners()}`}"
 						>
-							<!-- {#if showArrow}
-								<div class="w-4 overflow-hidden inline-block">
-									<div
-										class="h-6 rotate-45 transform origin-top-right"
-									></div>
-								</div>
-							{/if} -->
 							{m.message}
 						</li>
 					{/each}
 				</ul>
+
 				<div class="flex gap-2 *:rounded-lg">
 					<input
 						bind:value={messageInput}
@@ -107,7 +152,7 @@
 					/>
 					<button
 						onclick={() => sendMessages(messageInput, user)}
-						class="bg-[#534d56] py-1 text-white text-sm font-semibold px-2"
+						class="bg-sky-100 py-1 text-sm font-semibold px-2"
 						>Send</button
 					>
 				</div>
@@ -115,11 +160,3 @@
 		</div>
 	{/if}
 </div>
-
-<!-- /* HTML: <div class="triangle"></div> */
-.triangle {
-  width: 150px;
-  aspect-ratio: 1;
-  clip-path: polygon(0 0,100% 0,0 100%);
-  background: linear-gradient(45deg,#FA6900,#C02942);
-} -->
