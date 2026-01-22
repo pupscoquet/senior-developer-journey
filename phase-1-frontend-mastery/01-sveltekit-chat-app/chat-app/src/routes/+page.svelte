@@ -14,8 +14,6 @@
 	let tempUser = $state("");
 	let user = $state("");
 
-	const COLOURS = [""];
-
 	function sendMessages(message: string, user: string): Message[] {
 		const messageToSend: Message = { message, user };
 		bc.postMessage(messageToSend);
