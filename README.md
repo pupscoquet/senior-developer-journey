@@ -24,7 +24,7 @@ This repository documents my journey from junior to senior software engineer. Ea
 ### Phase 1: Frontend Mastery (Months 1-8)
 | Skill | Status | Project Link | Key Learnings |
 |-------|--------|--------------|---------------|
-| Advanced SvelteKit | 🔄 In Progress | [Link](#) | TBD |
+| Advanced SvelteKit | ✅ Completed | [echo-chat-app](#) | How to use `BroadcastChannel` |
 | TypeScript Deep Dive | ⏳ Not Started | - | - |
 | Component Systems | ⏳ Not Started | - | - |
 | Frontend Testing | ⏳ Not Started | - | - |
