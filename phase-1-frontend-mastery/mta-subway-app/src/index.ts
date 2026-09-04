@@ -1,4 +1,4 @@
-const url = "https://subwayinfo.nyc/api/"
+const url = "https://subwayinfo.nyc/api/arrivals?station_id="
 
 type arrivalInfo = {
 	line: string;
@@ -8,13 +8,21 @@ type arrivalInfo = {
 
 function formatArrival(arrival: arrivalInfo) {
 	const minsAway = arrival.minsAway;
-	if (minsAway === 0) return `${arrival.line} | ${arrival.direction} | Due now\n`
-	return `${arrival.line} | ${arrival.direction} | ${minsAway} mins\n`
+	const direction = arrival.direction === "Court Sq"
+		? "Queens"
+		: arrival.direction === "Church Av"
+		? "Kensington"
+		: arrival.direction === "168 St"
+		? "Jamaica"
+		: "Manhattan";
+	if (minsAway === 0) return `${arrival.line} | ${direction} | Due now\n`
+	else if (minsAway === 1) return `${arrival.line} | ${direction} | ${minsAway}min\n`
+	return `${arrival.line} | ${direction} | ${minsAway}mins\n`
 }
 
 let displayA = true;
 async function displayArrivals() {
-	const arrivals = await fetchStations();
+	const arrivals = await fetchStations("G34", "A44", 2);
 
 	const line1 = formatArrival(arrivals[0])
 	const line2 = formatArrival(arrivals[1])
@@ -25,6 +33,7 @@ async function displayArrivals() {
 		console.log(line1, line2);
 	} else {
 		console.log(line3, line4);
+		console.log("--------------------\n")
 	}
 	displayA = !displayA;
 }
@@ -33,11 +42,12 @@ function timedDisplay() {
 	setTimeout(displayArrivals, 10000);
 }
 
-async function fetchStations(): Promise<arrivalInfo[]> {
-	const classonAv = fetch(`${url}arrivals?station_id=G34&limit=2`);
-	const clintonWashAv = fetch(`${url}arrivals?station_id=A44&limit=2`);
+async function fetchStations(station1Id: string, station2Id: string, limit: number): Promise<arrivalInfo[]> {
+	const station1 = fetch(`${url}${station1Id}&limit=${limit}`);
+	const station2 = fetch(`${url}${station2Id}&limit=${limit}`);
+
 	const arrivals: arrivalInfo[] = [];
-	await classonAv.then((response) => {
+	await station1.then((response) => {
 		return response.json()
 		.then((r) => {
 			r.arrivals.forEach((arr) => {
@@ -46,7 +56,7 @@ async function fetchStations(): Promise<arrivalInfo[]> {
 		})
 	});
 
-	await clintonWashAv.then((response) => {
+	await station2.then((response) => {
 		return response.json()
 		.then((r) => {
 			r.arrivals.forEach((arr) => {
