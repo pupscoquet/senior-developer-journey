@@ -65,7 +65,7 @@ async function fetchStations(station1Id: string, station2Id: string, limit: numb
 		})
 	});
 
-	await arrivals.sort((arrivalA, arrivalB) => {
+	arrivals.sort((arrivalA, arrivalB) => {
 		const minsAwayA = arrivalA.minsAway;
 		const minsAwayB = arrivalB.minsAway;
 
