@@ -88,8 +88,8 @@ function Properties({ search, minBedrooms }: { search: string, minBedrooms: numb
 
 	properties.forEach((p) => {
 		const matchesSearch =
-			!search || p.address.toLowerCase() === search.toLowerCase()
-			|| p.city.toLowerCase() === search.toLowerCase() || p.price <= Number(search)
+			!search || p.address.toLowerCase().includes(search.toLowerCase())
+			|| p.city.toLowerCase().includes(search.toLowerCase()) || p.price <= Number(search)
 
 		const matchesMinBedrooms =
 			!minBedrooms || p.bedrooms >= Number(minBedrooms);
@@ -118,6 +118,13 @@ export default function PropertyPage() {
 		setMinBedrooms(minBedrooms = value)
 	}
 
+	const bedroomRadioButtons = [
+		{ id: 1, value: "min-1-bedroom" },
+		{ id: 2, value: "min-2-bedroom" },
+		{ id: 3, value: "min-3-bedroom" },
+		{ id: 4, value: "min-4-bedroom" }
+	]
+
 	return (
 		<>
 			<div className="p-4">
@@ -131,51 +138,22 @@ export default function PropertyPage() {
 						onChange={(e) => handleSetSearch(e.target.value)}
 						className="pl-2 flex flex-1 bg-white rounded-sm"
 					/>
+					<div className="text-right">Min. <br /> bedrooms</div>
 					<fieldset className="flex gap-6 justify-between">
-						<label htmlFor="min-1-bedroom">1
-							<input
-								type="radio"
-								id="min-1-bedroom"
-								name="minBedrooms"
-								value="1"
-								checked={minBedrooms === "1"}
-								onChange={(e) => handleSetMinBedrooms(e.target.value)}
-								className="pl-2 flex flex-1 bg-white rounded-sm"
-							/>
-						</label>
-						<label htmlFor="min-1-bedroom">2
-							<input
-								type="radio"
-								id="min-2-bedroom"
-								name="minBedrooms"
-								value="2"
-								checked={minBedrooms === "2"}
-								onChange={(e) => handleSetMinBedrooms(e.target.value)}
-								className="pl-2 flex flex-1 bg-white rounded-sm"
-							/>
-						</label>
-						<label htmlFor="min-1-bedroom">3
-							<input
-								type="radio"
-								id="min-3-bedroom"
-								name="minBedrooms"
-								value="3"
-								checked={minBedrooms === "3"}
-								onChange={(e) => handleSetMinBedrooms(e.target.value)}
-								className="pl-2 flex flex-1 bg-white rounded-sm"
-							/>
-						</label>
-						<label htmlFor="min-1-bedroom">4
-							<input
-								type="radio"
-								id="min-4-bedroom"
-								name="minBedrooms"
-								value="4"
-								checked={minBedrooms === "4"}
-								onChange={(e) => handleSetMinBedrooms(e.target.value)}
-								className="pl-2 flex flex-1 bg-white rounded-sm"
-							/>
-						</label>
+						{bedroomRadioButtons.map((button) => (
+							<label htmlFor={button.value}>{button.id}
+								<input
+									type="radio"
+									id={button.value}
+									name="minBedrooms"
+									value={button.id.toString()}
+									checked={minBedrooms === button.id.toString()}
+									onChange={(e) => handleSetMinBedrooms(e.target.value)}
+									className="pl-2 flex flex-1 bg-white rounded-sm"
+								/>
+							</label>
+
+						))}
 					</fieldset>
 				</form>
 				<Properties search={search} minBedrooms={Number(minBedrooms)} />
