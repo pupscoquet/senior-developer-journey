@@ -74,7 +74,7 @@ function Inbox({ unreadOnly }: { unreadOnly: boolean }) {
 
 	return (
 		<div className={filteredEmails.length ? "border-t" : ""}>
-			{filteredEmails}
+			{filteredEmails.length ? (filteredEmails) : <div className="pt-10">No emails left to read.</div>}
 		</div>
 	)
 }
